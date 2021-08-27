@@ -1,9 +1,10 @@
 {
-  "name": "lunch-and-learn-complete",
+  "name": "lunch-and-learn-amplify",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.12.9",
+    "@craco/craco": "^6.2.0",
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
     "@storybook/addon-a11y": "^6.1.9",
@@ -33,7 +34,7 @@
     "@typescript-eslint/eslint-plugin": "^4.9.0",
     "@typescript-eslint/parser": "^4.9.0",
     "babel-loader": "8.1.0",
-    "classnames": "^2.2.6",
+    "classnames": "^2.3.1",
     "cypress": "^6.0.1",
     "dotenv-cli": "^4.0.0",
     "eslint": "^7.14.0",
@@ -73,6 +74,7 @@
     "static-route-paths": "^0.2.2",
     "storybook-addon-i18n": "^5.1.13",
     "storybook-addon-material-ui": "^0.9.0-alpha.21",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "typescript": "^4.1.2",
     "typescript-fsa": "^3.0.0",
     "typescript-fsa-reducers": "^1.2.2",
@@ -91,7 +93,7 @@
     "workbox-streams": "^5.1.3"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "TAILWIND_MODE=watch craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",

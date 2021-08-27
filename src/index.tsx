@@ -1,16 +1,13 @@
+import React from "react";
 import "react-app-polyfill/ie11";
 import "react-app-polyfill/stable";
-
-import React from "react";
 import ReactDOM from "react-dom";
 import { I18nextProvider } from "react-i18next";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { ThemeProvider } from "@material-ui/core/styles";
-import { theme } from "./styles";
 import i18n from "./i18n";
-import App from "./ui";
-import * as serviceWorkerRegistration from "./service-worker-registration";
 import reportWebVitals from "./report-web-vitals";
+import * as serviceWorkerRegistration from "./service-worker-registration";
+import "./styles/index.css";
+import App from "./ui/app";
 
 const Loading: React.FC = () => {
   return <div>Loading...</div>;
@@ -21,10 +18,7 @@ const Root: React.FC = () => {
     <React.StrictMode>
       <React.Suspense fallback={<Loading />}>
         <I18nextProvider i18n={i18n}>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <App></App>
-          </ThemeProvider>
+          <App></App>
         </I18nextProvider>
       </React.Suspense>
     </React.StrictMode>

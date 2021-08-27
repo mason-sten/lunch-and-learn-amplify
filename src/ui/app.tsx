@@ -2,7 +2,10 @@ import React from "react";
 import { ErrorBoundary, FallbackProps } from "react-error-boundary";
 import { Redirect, Route, Switch } from "react-router";
 import { BrowserRouter as Router } from "react-router-dom";
-import Example from "../components/app";
+import DefaultLayout from "../layouts/DefaultLayout";
+import Feed from "../pages/Feed";
+import Home from "../pages/Home";
+import ReportNew from "../pages/ReportNew";
 import { routes } from "./routes";
 
 const UnhandledError: React.FC<FallbackProps> = ({ error, resetErrorBoundary }) => {
@@ -25,7 +28,17 @@ const App: React.FC = () => {
     <ErrorBoundary FallbackComponent={UnhandledError} onError={errorHandler}>
       <Router>
         <Switch>
-          <Route path={routes.path} component={Example} />
+          {/* Default Layout Routes */}
+          <Route path={routes.path}>
+            <DefaultLayout>
+              <Switch>
+                <Route path={routes.reportNew.path} component={ReportNew} />
+                <Route path={routes.feed.path} component={Feed} />
+                <Route path={routes.path} component={Home} />
+              </Switch>
+            </DefaultLayout>
+          </Route>
+
           <Redirect to={routes.path} />
         </Switch>
       </Router>
