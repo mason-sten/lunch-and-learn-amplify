@@ -15,16 +15,13 @@ const DefaultLayout: React.FC<Props> = ({ children }) => {
             <NavLink className="nav-link" to={routes.root.path} exact>
               Home
             </NavLink>
-            <NavLink className="nav-link" to={routes.feed.path}>
-              Recent Posts
-            </NavLink>
-            <NavLink className="nav-link" to={routes.reportNew.path}>
-              Report Suspicious Activity
+            <NavLink className="nav-link" to={routes.new.path}>
+              New Post
             </NavLink>
           </div>
           <div className="flex space-x-2 items-center">
             <Link className="btn-primary" to={routes.root.path}>
-              Login / Sign up
+              Logout
             </Link>
           </div>
         </nav>

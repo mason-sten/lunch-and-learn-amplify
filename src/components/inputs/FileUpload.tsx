@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { omit } from "lodash";
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 
 interface Props {
@@ -42,6 +43,11 @@ const FileUpload: React.FC<Props> = ({
       }
     }
     return { ...value };
+  };
+
+  const deleteFile = (fileName: string) => {
+    const newValue = omit(value, fileName);
+    onChange(newValue);
   };
 
   const handleNewFileUpload = (e: ChangeEvent<HTMLInputElement>) => {
@@ -103,25 +109,29 @@ const FileUpload: React.FC<Props> = ({
       <div>
         <article className="py-4">
           <p>To Upload</p>
-          <section className="grid grid-cols-4 gap-4 pt-4">
+          <section className="flex flex-wrap pt-4">
             {Object.keys(value).map((fileName, index) => {
               const file = value[fileName];
               const isImageFile = file.type.split("/")[0] === "image";
               return (
-                <section key={fileName}>
-                  <div>
-                    {isImageFile && (
-                      <img
-                        className="rounded hover:scale-110 transition-all duration-200"
-                        src={URL.createObjectURL(file)}
-                        alt={`file preview ${index}`}
-                      />
-                    )}
+                <section key={fileName} className="flex-1 p-2 min-w-[300px]">
+                  <div className="flex flex-col h-full bg-gray-700 rounded p-2">
+                    <div className="flex-grow">
+                      {isImageFile && (
+                        <img
+                          className="rounded hover:scale-110 transition-all duration-200 mx-auto py-2"
+                          src={URL.createObjectURL(file)}
+                          alt={`file preview ${index}`}
+                        />
+                      )}
+                    </div>
                     <div>
                       <span className="mt-2 text-xs h-4 overflow-hidden block truncate">{file.name}</span>
                       <aside className="flex justify-between">
                         <span className="text-sm">{convertBytesToKB(file.size)} kb</span>
-                        <button className="text-sm underline">Delete</button>
+                        <button className="text-sm underline" onClick={() => deleteFile(file.name)}>
+                          Delete
+                        </button>
                       </aside>
                     </div>
                   </div>

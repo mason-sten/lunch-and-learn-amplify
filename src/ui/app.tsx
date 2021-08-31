@@ -3,9 +3,9 @@ import { ErrorBoundary, FallbackProps } from "react-error-boundary";
 import { Redirect, Route, Switch } from "react-router";
 import { BrowserRouter as Router } from "react-router-dom";
 import DefaultLayout from "../layouts/DefaultLayout";
-import Feed from "../pages/Feed";
-import Home from "../pages/Home";
-import ReportNew from "../pages/ReportNew";
+import PostIndex from "../pages/PostIndex";
+import PostNew from "../pages/PostNew";
+import PostShow from "../pages/PostShow";
 import { routes } from "./routes";
 
 const UnhandledError: React.FC<FallbackProps> = ({ error, resetErrorBoundary }) => {
@@ -32,9 +32,9 @@ const App: React.FC = () => {
           <Route path={routes.path}>
             <DefaultLayout>
               <Switch>
-                <Route path={routes.reportNew.path} component={ReportNew} />
-                <Route path={routes.feed.path} component={Feed} />
-                <Route path={routes.path} component={Home} />
+                <Route path={routes.new.path} component={PostNew} />
+                <Route path={routes.root.show.path} component={PostShow} />
+                <Route path={routes.root.path} component={PostIndex} />
               </Switch>
             </DefaultLayout>
           </Route>
