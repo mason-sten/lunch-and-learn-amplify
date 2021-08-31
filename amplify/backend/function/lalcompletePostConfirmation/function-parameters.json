@@ -1,0 +1,18 @@
+{
+  "trigger": true,
+  "modules": [
+    "add-to-group"
+  ],
+  "parentResource": "lalcomplete",
+  "functionName": "lalcompletePostConfirmation",
+  "resourceName": "lalcompletePostConfirmation",
+  "parentStack": "auth",
+  "triggerEnvs": [],
+  "triggerDir": "/Users/masonstenquist/.nvm/versions/node/v16.4.0/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/PostConfirmation",
+  "triggerTemplate": "PostConfirmation.json.ejs",
+  "triggerEventPath": "PostConfirmation.event.json",
+  "roleName": "lalcompletePostConfirmation",
+  "skipEdit": true,
+  "GROUP": "all",
+  "enableCors": false
+}

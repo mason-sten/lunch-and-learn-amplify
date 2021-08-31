@@ -1,0 +1,20 @@
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+type Post @model {
+  id: ID!
+  title: String!
+  body: String
+  status: PostStatus!
+  images: [Image] @connection(keyName: "byPost", fields: ["id"])
+}
+
+type Image @model @key(name: "byPost", fields: ["postID"]) {
+  id: ID!
+  postID: ID!
+  post: Post @connection(fields: ["postID"])
+  key: String!
+}
