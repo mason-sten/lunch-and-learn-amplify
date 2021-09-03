@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "lalcomplete",
+    "identityPoolName": "lalcomplete315bd602_identitypool_315bd602",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "lalcom2c4de631",
-    "userPoolName": "lalcomplete",
+    "resourceNameTruncated": "lalcom315bd602",
+    "userPoolName": "lalcomplete315bd602_userpool_315bd602",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -31,10 +31,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "lalcom2c4de631_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "lalcom315bd602_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "2c4de631",
-    "resourceName": "lalcomplete",
+    "sharedId": "315bd602",
+    "resourceName": "lalcomplete315bd602315bd602",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -50,33 +50,17 @@
     },
     "useDefault": "manual",
     "thirdPartyAuth": false,
-    "userPoolGroups": true,
+    "userPoolGroups": false,
     "adminQueries": false,
-    "triggers": "{\n  \"PostConfirmation\": [\n    \"add-to-group\"\n  ]\n}",
+    "triggers": "{}",
     "hostedUI": false,
-    "userPoolGroupList": [
-        "all",
-        "admin"
-    ],
+    "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
     "parentStack": {
         "Ref": "AWS::StackId"
     },
-    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PostConfirmation\",\n    \"lambdaFunctionName\": \"lalcompletePostConfirmation\"\n  }\n]",
     "breakCircularDependency": true,
-    "permissions": [
-        "{\n  \"policyName\": \"AddToGroupCognito\",\n  \"trigger\": \"PostConfirmation\",\n  \"effect\": \"Allow\",\n  \"actions\": [\n    \"cognito-idp:AdminAddUserToGroup\",\n    \"cognito-idp:GetGroup\",\n    \"cognito-idp:CreateGroup\"\n  ],\n  \"resource\": {\n    \"paramType\": \"!GetAtt\",\n    \"keys\": [\n      \"UserPool\",\n      \"Arn\"\n    ]\n  }\n}"
-    ],
-    "dependsOn": [
-        {
-            "category": "function",
-            "resourceName": "lalcompletePostConfirmation",
-            "triggerProvider": "Cognito",
-            "attributes": [
-                "Arn",
-                "Name"
-            ]
-        }
-    ]
+    "permissions": [],
+    "dependsOn": []
 }

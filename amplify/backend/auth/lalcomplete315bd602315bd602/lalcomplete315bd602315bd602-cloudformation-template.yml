@@ -10,18 +10,6 @@ Parameters:
     Type: String
 
   
-  
-  
-  functionlalcompletePostConfirmationArn:
-    Type: String
-    Default: functionlalcompletePostConfirmationArn
-  
-  functionlalcompletePostConfirmationName:
-    Type: String
-    Default: functionlalcompletePostConfirmationName
-  
-  
-  
 
     
   identityPoolName:
@@ -167,10 +155,6 @@ Parameters:
   parentStack:
     Type: String
         
-  authTriggerConnections:
-    Type: String
-  
-            
   
   breakCircularDependency:
     Type: String
@@ -197,7 +181,7 @@ Resources:
   # Created to allow the UserPool SMS Config to publish via the Simple Notification Service during MFA Process
     Type: AWS::IAM::Role
     Properties:
-      RoleName: !If [ShouldNotCreateEnvResources, 'lalcom2c4de631_sns-role', !Join ['',[ 'sns', '2c4de631', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
+      RoleName: !If [ShouldNotCreateEnvResources, 'lalcom315bd602_sns-role', !Join ['',[ 'sns', '315bd602', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
@@ -209,10 +193,10 @@ Resources:
               - "sts:AssumeRole"
             Condition:
               StringEquals:
-                sts:ExternalId: lalcom2c4de631_role_external_id
+                sts:ExternalId: lalcom315bd602_role_external_id
       Policies:
         -
-          PolicyName: lalcom2c4de631-sns-policy
+          PolicyName: lalcom315bd602-sns-policy
           PolicyDocument:
             Version: "2012-10-17"
             Statement:
@@ -269,7 +253,7 @@ Resources:
       SmsAuthenticationMessage: !Ref smsAuthenticationMessage
       SmsConfiguration:
         SnsCallerArn: !GetAtt SNSRole.Arn
-        ExternalId: lalcom2c4de631_role_external_id
+        ExternalId: lalcom315bd602_role_external_id
     
   
   UserPoolClientWeb:
@@ -277,7 +261,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: lalcom2c4de631_app_clientWeb
+      ClientName: lalcom315bd602_app_clientWeb
       
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
       UserPoolId: !Ref UserPool
@@ -287,7 +271,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: lalcom2c4de631_app_client
+      ClientName: lalcom315bd602_app_client
       
       GenerateSecret: !Ref userpoolClientGenerateSecret
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
@@ -298,7 +282,7 @@ Resources:
   # Created to execute Lambda which gets userpool app client config values
     Type: 'AWS::IAM::Role'
     Properties:
-      RoleName: !If [ShouldNotCreateEnvResources, !Ref userpoolClientLambdaRole, !Join ['',['upClientLambdaRole', '2c4de631', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
+      RoleName: !If [ShouldNotCreateEnvResources, !Ref userpoolClientLambdaRole, !Join ['',['upClientLambdaRole', '315bd602', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -352,7 +336,7 @@ Resources:
   # Marked as depending on UserPoolClientRole for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: lalcom2c4de631_userpoolclient_lambda_iam_policy
+      PolicyName: lalcom315bd602_userpoolclient_lambda_iam_policy
       Roles:
         - !Ref UserPoolClientRole
       PolicyDocument:
@@ -369,7 +353,7 @@ Resources:
   # Marked as depending on UserPoolClientLambdaPolicy for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: lalcom2c4de631_userpoolclient_lambda_log_policy
+      PolicyName: lalcom315bd602_userpoolclient_lambda_log_policy
       Roles:
         - !Ref UserPoolClientRole
       PolicyDocument:
@@ -409,7 +393,7 @@ Resources:
   # Always created
     Type: AWS::Cognito::IdentityPool
     Properties:
-      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'lalcomplete', !Join ['',['lalcomplete', '__', !Ref env]]]
+      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'lalcomplete315bd602_identitypool_315bd602', !Join ['',['lalcomplete315bd602_identitypool_315bd602', '__', !Ref env]]]
       
       CognitoIdentityProviders:
         - ClientId:  !Ref UserPoolClient
