@@ -7,12 +7,19 @@ const PostNew: React.FC = () => {
   const [body, setBody] = useState("");
   const [files, setFiles] = useState<Files>({});
 
+  const submit = async () => {
+    console.log("submit");
+  };
+
   return (
     <div>
       <h1 className="font-thin">New Post</h1>
       <Input className="py-4" label="Title" value={title} onChange={setTitle} />
       <TextArea className="py-4" label="Body" rows={3} value={body} onChange={setBody} />
       <FileUpload multiple label="Photos" value={files} onChange={(files) => setFiles(files)} />
+      <button onClick={submit} className="btn-primary">
+        Submit
+      </button>
     </div>
   );
 };

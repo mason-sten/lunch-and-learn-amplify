@@ -24,7 +24,11 @@ const PostShow: React.FC = () => {
       <h2>Images</h2>
       <section className="grid gap-8 py-8 grid-cols-2 md:grid-cols-3">
         {images.map((image) => (
-          <img src={image.url} alt={image.alt} />
+          <img
+            src={image.url}
+            alt={image.alt}
+            className="bg-gray-700 rounded-lg p-4 transition-all duration-100 hover:scale-110"
+          />
         ))}
       </section>
     </div>
