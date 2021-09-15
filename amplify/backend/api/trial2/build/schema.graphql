@@ -1,0 +1,225 @@
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+type Post {
+  id: ID!
+  title: String!
+  body: String
+  status: PostStatus!
+  images(filter: ModelImageFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelImageConnection
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Image {
+  id: ID!
+  postID: ID!
+  post: Post
+  key: String!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelPostConnection {
+  items: [Post]
+  nextToken: String
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+input ModelPostStatusInput {
+  eq: PostStatus
+  ne: PostStatus
+}
+
+input ModelPostFilterInput {
+  id: ModelIDInput
+  title: ModelStringInput
+  body: ModelStringInput
+  status: ModelPostStatusInput
+  and: [ModelPostFilterInput]
+  or: [ModelPostFilterInput]
+  not: ModelPostFilterInput
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+type Query {
+  getPost(id: ID!): Post
+  listPosts(filter: ModelPostFilterInput, limit: Int, nextToken: String): ModelPostConnection
+  getImage(id: ID!): Image
+  listImages(filter: ModelImageFilterInput, limit: Int, nextToken: String): ModelImageConnection
+}
+
+input CreatePostInput {
+  id: ID
+  title: String!
+  body: String
+  status: PostStatus!
+}
+
+input UpdatePostInput {
+  id: ID!
+  title: String
+  body: String
+  status: PostStatus
+}
+
+input DeletePostInput {
+  id: ID!
+}
+
+type Mutation {
+  createPost(input: CreatePostInput!, condition: ModelPostConditionInput): Post
+  updatePost(input: UpdatePostInput!, condition: ModelPostConditionInput): Post
+  deletePost(input: DeletePostInput!, condition: ModelPostConditionInput): Post
+  createImage(input: CreateImageInput!, condition: ModelImageConditionInput): Image
+  updateImage(input: UpdateImageInput!, condition: ModelImageConditionInput): Image
+  deleteImage(input: DeleteImageInput!, condition: ModelImageConditionInput): Image
+}
+
+input ModelPostConditionInput {
+  title: ModelStringInput
+  body: ModelStringInput
+  status: ModelPostStatusInput
+  and: [ModelPostConditionInput]
+  or: [ModelPostConditionInput]
+  not: ModelPostConditionInput
+}
+
+type Subscription {
+  onCreatePost: Post @aws_subscribe(mutations: ["createPost"])
+  onUpdatePost: Post @aws_subscribe(mutations: ["updatePost"])
+  onDeletePost: Post @aws_subscribe(mutations: ["deletePost"])
+  onCreateImage: Image @aws_subscribe(mutations: ["createImage"])
+  onUpdateImage: Image @aws_subscribe(mutations: ["updateImage"])
+  onDeleteImage: Image @aws_subscribe(mutations: ["deleteImage"])
+}
+
+type ModelImageConnection {
+  items: [Image]
+  nextToken: String
+}
+
+input ModelImageFilterInput {
+  id: ModelIDInput
+  postID: ModelIDInput
+  key: ModelStringInput
+  and: [ModelImageFilterInput]
+  or: [ModelImageFilterInput]
+  not: ModelImageFilterInput
+}
+
+input CreateImageInput {
+  id: ID
+  postID: ID!
+  key: String!
+}
+
+input UpdateImageInput {
+  id: ID!
+  postID: ID
+  key: String
+}
+
+input DeleteImageInput {
+  id: ID!
+}
+
+input ModelImageConditionInput {
+  postID: ModelIDInput
+  key: ModelStringInput
+  and: [ModelImageConditionInput]
+  or: [ModelImageConditionInput]
+  not: ModelImageConditionInput
+}
