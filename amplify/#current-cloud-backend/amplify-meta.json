@@ -38,7 +38,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-trial2-dev-102749-deployment/amplify-cfn-templates/auth/trial24d2ac775-cloudformation-template.yml",
         "logicalId": "authtrial24d2ac775"
       },
-      "lastPushTimeStamp": "2021-09-15T14:39:36.629Z",
+      "lastPushTimeStamp": "2021-09-15T15:01:19.648Z",
       "output": {
         "UserPoolId": "us-east-2_CUHLWLNGV",
         "AppClientIDWeb": "4gn6ir9519hec14k90pt0aso28",
@@ -72,8 +72,24 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-trial2-dev-102749-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apitrial2"
       },
-      "lastPushTimeStamp": "2021-09-15T14:39:36.629Z",
+      "lastPushTimeStamp": "2021-09-15T15:01:19.651Z",
       "lastPushDirHash": "VxkPTnUWvFiib5kHcI7Z8ID9yyk="
+    }
+  },
+  "storage": {
+    "trial2": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-trial2-dev-102749-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+        "logicalId": "storagetrial2"
+      },
+      "lastPushTimeStamp": "2021-09-15T15:01:19.655Z",
+      "output": {
+        "BucketName": "trial2102749-dev",
+        "Region": "us-east-2"
+      },
+      "lastPushDirHash": "KoXbOVf5k/X8q9gS32GvF5CwKYo="
     }
   }
 }
