@@ -3,10 +3,7 @@
 // this is an auto generated file. This will be overwritten
 
 export const createPost = /* GraphQL */ `
-  mutation CreatePost(
-    $input: CreatePostInput!
-    $condition: ModelPostConditionInput
-  ) {
+  mutation CreatePost($input: CreatePostInput!, $condition: ModelPostConditionInput) {
     createPost(input: $input, condition: $condition) {
       id
       title
@@ -28,10 +25,7 @@ export const createPost = /* GraphQL */ `
   }
 `;
 export const updatePost = /* GraphQL */ `
-  mutation UpdatePost(
-    $input: UpdatePostInput!
-    $condition: ModelPostConditionInput
-  ) {
+  mutation UpdatePost($input: UpdatePostInput!, $condition: ModelPostConditionInput) {
     updatePost(input: $input, condition: $condition) {
       id
       title
@@ -53,10 +47,7 @@ export const updatePost = /* GraphQL */ `
   }
 `;
 export const deletePost = /* GraphQL */ `
-  mutation DeletePost(
-    $input: DeletePostInput!
-    $condition: ModelPostConditionInput
-  ) {
+  mutation DeletePost($input: DeletePostInput!, $condition: ModelPostConditionInput) {
     deletePost(input: $input, condition: $condition) {
       id
       title
@@ -78,10 +69,7 @@ export const deletePost = /* GraphQL */ `
   }
 `;
 export const createImage = /* GraphQL */ `
-  mutation CreateImage(
-    $input: CreateImageInput!
-    $condition: ModelImageConditionInput
-  ) {
+  mutation CreateImage($input: CreateImageInput!, $condition: ModelImageConditionInput) {
     createImage(input: $input, condition: $condition) {
       id
       postID
@@ -103,10 +91,7 @@ export const createImage = /* GraphQL */ `
   }
 `;
 export const updateImage = /* GraphQL */ `
-  mutation UpdateImage(
-    $input: UpdateImageInput!
-    $condition: ModelImageConditionInput
-  ) {
+  mutation UpdateImage($input: UpdateImageInput!, $condition: ModelImageConditionInput) {
     updateImage(input: $input, condition: $condition) {
       id
       postID
@@ -128,10 +113,7 @@ export const updateImage = /* GraphQL */ `
   }
 `;
 export const deleteImage = /* GraphQL */ `
-  mutation DeleteImage(
-    $input: DeleteImageInput!
-    $condition: ModelImageConditionInput
-  ) {
+  mutation DeleteImage($input: DeleteImageInput!, $condition: ModelImageConditionInput) {
     deleteImage(input: $input, condition: $condition) {
       id
       postID

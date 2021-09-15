@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --amplify-background-color: #505f73;
+  --amplify-secondary-contrast: rgb(31, 41, 55);
+  --amplify-secondary-color: white;
+  --amplify-grey: #ededed;
+  --amplify-light-grey: rgb(75, 85, 99);
+  --amplify-primary-color: rgb(80, 180, 229);
+  --amplify-primary-tint: rgb(53, 162, 216);
+  --amplify-primary-shade: rgb(61, 167, 220);
+}
+
 html {
   @apply bg-gray-800 text-white;
 }
